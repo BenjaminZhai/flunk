@@ -1,13 +1,23 @@
-let btn = document.getElementById("addword").addEventListener("click", run)
-let word = document.getElementById("word")
-let def = document.getElementById("definition")
+// CODE
+
+
+// GLOBAL VARIABLES
 let array = load();
 let ranword;
 let randef;
 let firsttestcheck = false
 let secondtestcheck = false
+let checkforarray = false
 
+
+// FUNCTIONS
+
+// Flash Cards Functions
+let btn = document.getElementById("addword").addEventListener("click", run)
+let word = document.getElementById("word")
+let def = document.getElementById("definition")
 function run(){
+    checkforarray = true
     let x = word.value
     let y = def.value
     array.push(newset(x, y))
@@ -18,16 +28,28 @@ function run(){
     save();
 }
 
+let clear = document.getElementById("clear").addEventListener("click", clearfunc)
+function clearfunc(){
+    array = []
+    checkforarray = false
+    save()
+}
+
+// Test 1 Functions (answer with word)
 let givedefbtn = document.getElementById("defbtn").addEventListener("click", firsttest)
 let questionfirst = document.getElementById("givedef")
 function firsttest(){
-    firsttestcheck = true
-    let num = Math.floor(Math.random()*array.length)
-    ranword = array[num].word
-    randef = array[num].def
-    console.log(randef)
-    console.log(ranword)
-    questionfirst.innerHTML = randef
+    if(checkforarray === true){
+        firsttestcheck = true
+        let num = Math.floor(Math.random()*array.length)
+        ranword = array[num].word
+        randef = array[num].def
+        console.log(randef)
+        console.log(ranword)
+        questionfirst.innerHTML = randef
+    } else{
+        alert("Please input words")
+    }
 }
 
 let checkans1 = document.getElementById("checkans1").addEventListener("click", checkfirstanswer)
@@ -42,16 +64,21 @@ function checkfirstanswer(){
     }
 }
 
+// Test 2 Functions (answer with definition)
 let givewordbtn = document.getElementById("wordbtn").addEventListener("click", secondtest)
 let questionsecond = document.getElementById("giveword")
 function secondtest(){
-    secondtestcheck = true
-    let num = Math.floor(Math.random()*array.length)
-    ranword = array[num].word
-    randef = array[num].def
-    console.log(randef)
-    console.log(ranword)
-    questionsecond.innerHTML = ranword
+    if(checkforarray === true){
+        secondtestcheck = true
+        let num = Math.floor(Math.random()*array.length)
+        ranword = array[num].word
+        randef = array[num].def
+        console.log(randef)
+        console.log(ranword)
+        questionsecond.innerHTML = ranword
+    } else{
+        alert("Please input words")
+    }
 }
 
 let checkans2 = document.getElementById("checkans2").addEventListener("click", checksecondanswer)
@@ -66,8 +93,8 @@ function checksecondanswer(){
     }
 }
 
-// DO CHECK ANSWER FOR SECOND ONE
 
+// Helper Function to Push into Arrays
 function newset(newword, newdef){
     return {
         word : newword,
@@ -76,6 +103,7 @@ function newset(newword, newdef){
 
 }
 
+// Local Storage
 function save(){
     localStorage.setItem("flashcards", JSON.stringify(array))
 }
