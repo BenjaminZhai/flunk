@@ -54,6 +54,18 @@ function secondtest(){
     questionsecond.innerHTML = ranword
 }
 
+let checkans2 = document.getElementById("checkans2").addEventListener("click", checksecondanswer)
+let defanswer = document.getElementById("defanswer")
+function checksecondanswer(){
+    if(secondtestcheck === true){
+        if(randef === defanswer.value){
+            alert("YES!")
+        } else{
+            alert("NO!")
+        }
+    }
+}
+
 // DO CHECK ANSWER FOR SECOND ONE
 
 function newset(newword, newdef){
