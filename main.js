@@ -15,9 +15,13 @@ let checkforarray = true
 // FUNCTIONS
 
 // Flash Cards Functions
+
+// Variables for Flashcards
 let btn = document.getElementById("addword").addEventListener("click", run)
 let word = document.getElementById("word")
 let def = document.getElementById("definition")
+
+// Add Word to Flashcards
 function run(){
     checkforarray = true
     let x = word.value
@@ -30,6 +34,7 @@ function run(){
     save();
 }
 
+// Clear Flashcards
 let clear = document.getElementById("clear").addEventListener("click", clearfunc)
 function clearfunc(){
     array = []
