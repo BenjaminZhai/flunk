@@ -5,9 +5,11 @@
 let array = load();
 let ranword;
 let randef;
+let ranword2;
+let randef2;
 let firsttestcheck = false
 let secondtestcheck = false
-let checkforarray = false
+let checkforarray = true
 
 
 // FUNCTIONS
@@ -71,11 +73,11 @@ function secondtest(){
     if(checkforarray === true){
         secondtestcheck = true
         let num = Math.floor(Math.random()*array.length)
-        ranword = array[num].word
-        randef = array[num].def
-        console.log(randef)
-        console.log(ranword)
-        questionsecond.innerHTML = ranword
+        ranword2 = array[num].word
+        randef2 = array[num].def
+        console.log(randef2)
+        console.log(ranword2)
+        questionsecond.innerHTML = ranword2
     } else{
         alert("Please input words")
     }
@@ -85,7 +87,7 @@ let checkans2 = document.getElementById("checkans2").addEventListener("click", c
 let defanswer = document.getElementById("defanswer")
 function checksecondanswer(){
     if(secondtestcheck === true){
-        if(randef === defanswer.value){
+        if(randef2 === defanswer.value){
             alert("YES!")
         } else{
             alert("NO!")
