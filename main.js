@@ -17,11 +17,11 @@ let checkforarray = true
 // Flash Cards Functions
 
 // Variables for Flashcards
-let btn = document.getElementById("addword").addEventListener("click", run)
 let word = document.getElementById("word")
 let def = document.getElementById("definition")
 
 // Add Word to Flashcards
+let btn = document.getElementById("addword").addEventListener("click", run)
 function run(){
     checkforarray = true
     let x = word.value
